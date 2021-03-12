@@ -1,9 +1,6 @@
 body {
   width: 340px;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
-    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-  color: #666666;
-  font-size: 0.5em;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 .main_area {
   width: 340px;
@@ -14,11 +11,20 @@ body {
 }
 .target_url_field label {
   display: block;
+  color: #666666;
+  font-size: 0.5em;
 }
 .target_url_field .input {
   display: inline-flex;
 }
-.target_url_field .input button {
+.target_url_field .input input#target_url {
+  width: 210px;
+  padding: 10px;
+  background-color: #EEEEEE;
+  border-radius: 3px;
+  border: solid 1px #EEEEEE;
+}
+.target_url_field .input button#set_target_url {
   color: #fff;
   background-color: #1976D2;
   width: 80px;
@@ -27,28 +33,22 @@ body {
   border-radius: 3px;
   transition: 0.3s;
   cursor: pointer;
+  margin-left: 5px;
 }
-.target_url_field .input button:hover {
+.target_url_field .input button#set_target_url:hover {
   color: #fff;
   background-color: #0D47A1;
-}
-.target_url_field .input span {
-  font-size: medium;
-  padding: 5px 0;
-}
-#set_target_url {
-  margin-left: 5px;
 }
 .operation_field {
   margin: 10px 5px;
 }
-.operation_field .reset_remove {
+.operation_field .remove {
   display: inline-flex;
 }
 .operation_field .export {
   margin: 10px 0;
 }
-.operation_field .reset_remove button {
+.operation_field .remove button {
   color: #00796B;
   background-color: #fff;
   width: 150px;
@@ -58,11 +58,11 @@ body {
   transition: 0.3s;
   cursor: pointer;
 }
-.operation_field .reset_remove button:hover {
+.operation_field .remove button:hover {
   color: #fff;
   background-color: #00796B;
 }
-.operation_field button#reset {
+.operation_field button#remove_all {
   margin-right: 10px;
 }
 .operation_field button#export {

@@ -56,14 +56,25 @@ document.getElementById("remove_cuttent").onclick = function() {
       // remove the last data for current url
       performance_results[current_url].pop();
       chrome.storage.local.set({"performance_results": performance_results}, function() {});
+
+      alert("Removed the last performance data");
     });
   }
 };
 
-document.getElementById("reset").onclick = function() {
-  chrome.storage.local.clear();
-  document.getElementById("target_url").value = "";
-  alert("Reset completed");
+document.getElementById("remove_all").onclick = function() {
+  let is_remove_all = window.confirm(`
+    It's going to remove all performance data.\n
+    Are you sure you want to do it?
+  `);
+
+  // remove all data
+  if (is_remove_all === true) {
+    chrome.storage.local.clear();
+    document.getElementById("target_url").value = "";
+
+    alert("Removed all data");
+  }
 };
 
 // Download

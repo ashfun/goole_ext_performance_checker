@@ -9,13 +9,24 @@
   </head>
   <body>
     <div class="main_area">
-      <label for="target_url">Target URL</label>
-      <input type="text" id="target_url" name="target_url" size="50" required>/*
-      <input id="set_target_url" type="button" value="Set">
-      <br>
-      <input id="reset" type="button" value="Reset">
+      <div class="target_url_field">
+        <label for="target_url">Target URL</label>
+        <div class="input">
+          <input type="text" id="target_url" name="target_url" size="30">
+          <span>/*</span>
+          <button id="set_target_url" type="button">Set</button>
+        </div>
+      </div>
+      <div class="operation_field">
+        <div class="reset_remove">
+          <button id="reset" type="button">Reset</button>
+          <button id="remove_cuttent" type="button">Remove current data</button>
+        </div>
+        <div class="export">
+          <button id="export" type="button">Export</button>
+        </div\>
+      </div>
       <!-- add cancel button to cancel current record -->
-    <!--script src="popup.min.js"></script-->
     <script src="popup.js"></script>
   </body>
 </html>

@@ -1,24 +1,31 @@
 window.addEventListener('load', (event) => {
-
-  var page_load = window.performance.timing.loadEventStart - window.performance.timing.fetchStart;
-  var ttfb = window.performance.timing.responseStart - window.performance.timing.requestStart;
-  // key: url, value: load, ttfb, timestamp
-  console.log(page_load);
-  console.log(ttfb);
-
-  chrome.storage.local.get("target_url", function (value) {
-    var target_url = value.target_url;
-    var accessing_url = location.href;
-
-    console.log(target_url);
-    console.log(accessing_url);
+  chrome.storage.local.get(["target_url", "performance_results"], function (value) {
+    let target_url = value.target_url;
+    let performance_results = value.performance_results;
+    let current_url = location.href;
 
     // URL matches the target url
-    if (accessing_url && !url.indexOf(target_url)) {
-      var page_load = window.performance.timing.loadEventStart - window.performance.timing.fetchStart;
-      var ttfb = window.performance.timing.responseStart - window.performance.timing.requestStart;
-      console.log(page_load);
-      console.log(ttfb);
+    if (current_url && !url.indexOf(target_url)) {
+      let page_load = window.performance.timing.loadEventStart - window.performance.timing.fetchStart;
+      let ttfb = window.performance.timing.responseStart - window.performance.timing.requestStart;
+      let result = {
+        timestamp: Date.now(),
+        page_load: page_load,
+        ttfb: ttfb
+      };
+
+      // initialize performance_results
+      if (!performance_results) {
+        performance_results = {};
+      }
+
+      // update performance_results
+      if (performance_results[current_url]) {
+        performance_results[current_url].push(result);
+      } else {
+        performance_results[current_url] = [result];
+      }
+      chrome.storage.local.set({"performance_results": performance_results}, function() {});
     }
   });
 

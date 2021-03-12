@@ -1,11 +1,82 @@
 body {
-  width: 400px;
+  width: 340px;
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
     Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   color: #666666;
   font-size: 0.5em;
 }
 .main_area {
-  width: 380px;
+  width: 340px;
   padding: 10px;
+}
+.target_url_field {
+  padding-bottom: 20px;
+}
+.target_url_field label {
+  display: block;
+}
+.target_url_field .input {
+  display: inline-flex;
+}
+.target_url_field .input button {
+  color: #fff;
+  background-color: #1976D2;
+  width: 80px;
+  padding: 10px;
+  border: solid 1px #1976D2;
+  border-radius: 3px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.target_url_field .input button:hover {
+  color: #fff;
+  background-color: #0D47A1;
+}
+.target_url_field .input span {
+  font-size: medium;
+  padding: 5px 0;
+}
+#set_target_url {
+  margin-left: 5px;
+}
+.operation_field {
+  margin: 10px 5px;
+}
+.operation_field .reset_remove {
+  display: inline-flex;
+}
+.operation_field .export {
+  margin: 10px 0;
+}
+.operation_field .reset_remove button {
+  color: #00796B;
+  background-color: #fff;
+  width: 150px;
+  padding: 10px;
+  border: solid 1px #00796B;
+  border-radius: 3px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.operation_field .reset_remove button:hover {
+  color: #fff;
+  background-color: #00796B;
+}
+.operation_field button#reset {
+  margin-right: 10px;
+}
+.operation_field button#export {
+  color: #fff;
+  background-color: #00796B;
+  width: 310px;
+  padding: 10px;
+  border: solid 1px #00796B;
+  border-radius: 3px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.operation_field button#export:hover {
+  color: #fff;
+  background-color: #004D40;
+  border: solid 1px #004D40;
 }

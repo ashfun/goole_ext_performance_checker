@@ -1,5 +1,5 @@
 {
-  "name": "Screenshots with target elements",
+  "name": "Performance collector",
   "manifest_version": 2,
   "version": "1.0",
   "browser_action": {

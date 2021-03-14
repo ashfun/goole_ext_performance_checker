@@ -3,14 +3,12 @@
   "manifest_version": 2,
   "version": "1.0",
   "browser_action": {
-    "default_title": "Screenshots with target elements",
+    "default_title": "Performance collector",
     "default_popup": "popup.html"
   },
   "permissions": [
     "storage",
     "unlimitedStorage",
-    "tabs",
-    "activeTab",
     "downloads",
     "http://*/*",
     "https://*/*"

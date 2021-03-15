@@ -26,6 +26,7 @@ window.addEventListener('load', (event) => {
         performance_results[current_url] = [result];
       }
       chrome.storage.local.set({"performance_results": performance_results}, function() {});
+      chrome.storage.local.set({"current_url": current_url}, function() {});
     }
   });
 

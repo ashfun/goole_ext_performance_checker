@@ -15,7 +15,6 @@ $(function() {
 document.getElementById("set_target_url").onclick = function() {
   if (document.getElementById("target_url").value) {
 
-    // check if it's ok to overwrite target URL
     chrome.storage.local.get("target_url", function (value) {
       let is_update_accepted = true;
       let original_target_url = value.target_url;
@@ -44,27 +43,33 @@ document.getElementById("set_target_url").onclick = function() {
 
 // Remove current data
 document.getElementById("remove_cuttent").onclick = function() {
-  is_remove_accepted = window.confirm(`
-    Would you like to remove the last performance data for this page?
-  `);
+  chrome.storage.local.get(["performance_results", "current_url"], function (value) {
+    let performance_results = value.performance_results;
+    let current_url = value.current_url;
 
-  if (is_remove_accepted === true) {
-    chrome.storage.local.get("performance_results", function (value) {
-      let performance_results = value.performance_results;
-      let current_url = location.href;
+    if (current_url) {
+      is_remove_accepted = window.confirm(`
+        Would you like to remove the performance data for current page?
+        URL: ${current_url}
+      `);
 
-      // remove the last data for current url
-      performance_results[current_url].pop();
-      chrome.storage.local.set({"performance_results": performance_results}, function() {});
+      if (is_remove_accepted === true) {
+        // remove the last data for current url
+        performance_results[current_url].pop();
+        chrome.storage.local.set({"performance_results": performance_results}, function() {});
+        chrome.storage.local.remove("current_url", function() {});
 
-      alert("Removed the last performance data");
-    });
-  }
+        alert("Removed the last performance data");
+      }
+    } else {
+      alert("The data is already removed.");
+    }
+  });
 };
 
 document.getElementById("remove_all").onclick = function() {
   let is_remove_all = window.confirm(`
-    It's going to remove all performance data.\n
+    It's going to remove all performance data & target url setting.\n
     Are you sure you want to do it?
   `);
 
@@ -93,7 +98,7 @@ function exportCSVFile(object) {
     let csv = '';
 
     // set headers
-    const key_list = ["url", "timestamp", "page_load", "ttfb"];
+    const key_list = ["url", "timestamp", "page_load (ms)", "ttfb (ms)"];
     csv = key_list.join(",") + '\r\n';
 
     // convert to CSV

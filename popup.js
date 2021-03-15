@@ -95,11 +95,12 @@ document.getElementById("export").onclick = function() {
 };
 
 function exportCSVFile(object) {
-    let csv = '';
-
     // set headers
-    const key_list = ["url", "timestamp", "page_load (ms)", "ttfb (ms)"];
-    csv = key_list.join(",") + '\r\n';
+    const headers = ["url", "timestamp", "page_load (ms)", "ttfb (ms)"];
+    const key_list = ["url", "timestamp", "page_load", "ttfb"];
+
+    // initiate csv with headers
+    let csv = headers.join(",") + '\r\n';
 
     // convert to CSV
     Object.keys(object).forEach(function (key) {

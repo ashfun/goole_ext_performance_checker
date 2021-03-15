@@ -10,7 +10,6 @@
     "storage",
     "unlimitedStorage",
     "downloads",
-    "tabs",
     "http://*/*",
     "https://*/*"
   ],

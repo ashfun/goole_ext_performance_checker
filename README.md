@@ -18,7 +18,7 @@ Only websites with URL starting with the URL you input.
 > e.g. input “https://google.com”,
 >
 > - a website with “https://google.com/example/” => True
-> - a website with “https://abc.google.com/example/” => > False
+> - a website with “https://abc.google.com/example/” => False
 > - a website with “http://google.com” => False
 
 **Export** : Download the csv file.  
